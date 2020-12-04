@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Box, Grid, Typography, TextField } from "@material-ui/core";
+import { Input } from '../../components';
+import { Box, Grid } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -9,8 +10,8 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     backgroundColor: "#232626",
-    height: "30vh",
-    borderRadius: "20px",
+    height: "20vh",
+    borderRadius: "15px",
     border: "1px solid #393a3b",
     paddingLeft: "13px",
     paddingRight: "13px",
@@ -20,18 +21,13 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
-  input: {
-    backgroundColor: "#f1f2f2",
-    width: "35%",
-    borderRadius: 6,
-  },
-  label: {
-    color: "#B8B8B8",
-    fontSize: "1.2em",
+  instructions: {
+    color: "#e3e6ea",
+    fontSize: "2.3em",
   },
 }));
 
-const Converter = () => {
+const Converter = ({celsius, farenheit, onHandleConvert}) => {
   const classes = useStyles();
 
   return (
@@ -44,18 +40,18 @@ const Converter = () => {
             justifyContent="space-around"
             className={classes.form}
           >
-            <TextField
-              id="outlined-basic"
-              className={classes.input}
-              variant="outlined"
+            <Input
+              id="celsius" 
+              value={celsius}
+              onChange={onHandleConvert}
+              label="Celsius ="
             />
-            <Typography className={classes.label}>Celsius =</Typography>
-            <TextField
-              id="outlined-basic"
-              className={classes.input}
-              variant="outlined"
+            <Input
+              id="farenheit" 
+              value={farenheit}
+              onChange={onHandleConvert}
+              label="Farenheit"
             />
-            <Typography className={classes.label}>Farenheit</Typography>
           </Box>
         </Grid>
       </Grid>
